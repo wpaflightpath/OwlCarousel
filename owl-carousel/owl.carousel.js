@@ -816,8 +816,11 @@ if (typeof Object.create !== "function") {
         moveEvents : function () {
             var base = this;
             if (base.options.mouseDrag !== false || base.options.touchDrag !== false) {
-                base.gestures();
-                base.disabledEvents();
+                base.checkBrowser();
+                if (base.browser.isTouch || base.options.mouseDrag !== false){
+                    base.gestures();
+                    base.disabledEvents();
+                }
             }
         },
 
